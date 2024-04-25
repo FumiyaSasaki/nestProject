@@ -30,3 +30,54 @@ model ShopItem {
 
   @@map("shopItem")
 }
+
+model Menu {
+  id                Int      @id @default(autoincrement())
+  uid               String   @unique
+  topImageUrl       String
+  itemImages        String
+  title             String
+  content           String
+  subTitle          String
+  shipping          String
+  saleDate          String
+  mark              String
+  blockItemUids     String
+  productSummaryUid String
+  size              String
+  expirationDate    String
+  rawMaterials      String
+  contentSummary    String
+  isLimitedTime     Boolean
+  price             Int
+  created_at        DateTime @updatedAt
+  updated_at        DateTime @updatedAt
+
+  @@map("Menu")
+}
+
+model BlockItem {
+  id         Int      @id @default(autoincrement())
+  uid        String   @unique
+  imageUrl   String
+  subTitle   String
+  title      String
+  content    String
+  created_at DateTime @updatedAt
+  updated_at DateTime @updatedAt
+
+  @@map("BlockItem")
+}
+
+model ProductSummary {
+  id             Int      @id @default(autoincrement())
+  uid            String   @unique
+  size           String
+  expirationDate String
+  rawMaterials   String
+  content        String
+  created_at     DateTime @updatedAt
+  updated_at     DateTime @updatedAt
+
+  @@map("ProductSummary")
+}

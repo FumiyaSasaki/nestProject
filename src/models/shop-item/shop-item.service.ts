@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma, ShopItem } from '@prisma/client';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from 'src/models/prisma/prisma.service';
 
 @Injectable()
 export class ShopItemService {
@@ -8,6 +8,10 @@ export class ShopItemService {
 
     async getShopItemById(id: number): Promise<ShopItem> {
         return this.prisma.shopItem.findUnique({ where: { id } });
+    }
+
+    async getShopItemByIds(ids: number[]): Promise<ShopItem[]> {
+        return this.prisma.shopItem.findMany({ where: { id: { in: ids } } });
     }
 
     async getAllShopItems(): Promise<ShopItem[]> {
